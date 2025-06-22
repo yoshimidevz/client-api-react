@@ -124,7 +124,7 @@ function List() {
               {/* Botões de ação */}
               <div className="btn-group ms-3">
                 <Link
-                  to={`/users/edit/${u.id}`} //tirar o ID do URL, fazer uma lógica pra passar o ID pra página de edição (Talvez o Cristian saiba como fazer)
+                  to={`/users/edit/${u.id}`} 
                   className="btn btn-sm btn-warning"
                   title="Editar"
                 >

@@ -19,7 +19,7 @@ function App() {
           <Route path="/users" element={<ListaTodosUsuarios />} />
           <Route path="/users/:id" element={<ListaUsuarioID />} />
           <Route path="/users/create" element={<CriarUsuario/>} />
-          <Route path="/users/edit" element={<EditarUsuario/>} />
+          <Route path="/users/edit/:id" element={<EditarUsuario />} />
         </Routes>
       </Layout>
     </Router>

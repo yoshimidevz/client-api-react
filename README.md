@@ -1,54 +1,21 @@
-# React + TypeScript + Vite
+# 🧑‍💼 Gerenciador de Usuários
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é um **gerenciador de usuários** que realiza operações de **listagem**, **busca**, **edição** e **exclusão** de usuários armazenados em um banco de dados. A aplicação é dividida em duas partes principais:
 
-Currently, two official plugins are available:
+- **Frontend**: Interface web desenvolvida com React + Bootstrap.
+- **Backend**: API construída em PHP com rotas REST, conectada a um banco de dados MySQL.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requisitos
 
-## Expanding the ESLint configuration
+- [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/)
+- [Composer](https://getcomposer.org/) instalado na máquina (opcional, pode rodar pelo container)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Como rodar o projeto
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. **Clone este repositório:** https://github.com/mitugui/bd_II_api_php
+2. **Instale as dependências da API**: composer install
+3. **Inicie os containers**: docker-compose up -d
+4. **Acesse a aplicação**: 
+    Frontend: http://localhost:5173
+    Backend/API: http://localhost:8080
+    # OBS: se a aplicação frotend não estiver rodando, deve-se acessar o repositório https://github.com/yoshimidevz/client-api-react e rodar o npm run dev.

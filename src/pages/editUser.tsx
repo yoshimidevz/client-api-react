@@ -1,26 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Edit() {
-  const [id, setId] = useState("");
+  const { id } = useParams();
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const fetchUser = async () => { //função que vai buscar os dados do usuário pelo ID
-    setLoading(true); //começa o carregamento
-    setError(""); //limpa o erro
-    setNome(""); //limpa o nome
-    setEmail(""); //limpa o email
-    setSuccess(""); //limpa mensagem de sucesso
+  // função para buscar dados do usuário
+  const fetchUser = async () => {
+    setLoading(true);
+    setError("");
+    setSuccess("");
 
     try {
-      const res = await fetch(`http://localhost:8080/users?id=${id}`);  //faz a requisição GET para buscar o usuário pelo ID
-      if (!res.ok) throw new Error("Erro ao buscar usuário");  //espera uma resposta OK, se não for, lança um erro
+      const res = await fetch(`http://localhost:8080/users?id=${id}`);
+      if (!res.ok) throw new Error("Erro ao buscar usuário");
 
-      const data = await res.json(); 
+      const data = await res.json();
       if (Array.isArray(data) && data.length > 0) {
         setNome(data[0].nome);
         setEmail(data[0].email);
@@ -34,6 +34,11 @@ function Edit() {
     }
   };
 
+  useEffect(() => {
+    if (id) fetchUser();
+  }, [id]);
+
+  // função para atualizar o usuário
   const updateUser = async () => {
     setLoading(true);
     setError("");
@@ -50,7 +55,6 @@ function Edit() {
 
       if (!res.ok) throw new Error("Erro ao atualizar usuário");
 
-      const data = await res.json();
       setSuccess("Usuário atualizado com sucesso!");
     } catch (err: any) {
       setError(err.message || "Erro desconhecido");
@@ -63,18 +67,7 @@ function Edit() {
     <div className="container py-5">
       <h1 className="mb-4">Editar Usuário</h1>
 
-      <div className="input-group mb-3">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Digite o ID do usuário"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-        />
-        <button className="btn btn-primary" onClick={fetchUser} disabled={loading}>
-          Buscar
-        </button>
-      </div>
+      {loading && <div className="alert alert-info">Carregando...</div>}
 
       {nome && (
         <>
