@@ -4,6 +4,7 @@ import { Users, Plus, List, BarChart3 } from 'lucide-react';
 
 const Home: React.FC = () => {
   return (
+    
     <div className="space-y-6">
       {/* Hero Section */}
       <div className="text-center">
@@ -17,12 +18,12 @@ const Home: React.FC = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div className="d-flex flex-row justify-content-around p-2">
         <Link
           to="/users"
           className="group bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
         >
-          <div className="flex items-center">
+          <div className="flex items-center p-2">
             <div className="flex-shrink-0">
               <List className="h-8 w-8 text-blue-600" />
             </div>
@@ -41,7 +42,7 @@ const Home: React.FC = () => {
           to="/users/create"
           className="group bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
         >
-          <div className="flex items-center">
+          <div className="flex items-center p-2">
             <div className="flex-shrink-0">
               <Plus className="h-8 w-8 text-green-600" />
             </div>

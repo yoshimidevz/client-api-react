@@ -16,21 +16,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="bg-white shadow-sm border-b fixed-top">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow-p">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Users className="h-8 w-8 text-primary mr-3" />
+
+            <div className="d-flex flex-row justify-content-between p-2 align-items-center">
+              
               <h1 className="text-xl font-semibold text-foreground">
                 Gerenciador de Usuários
               </h1>
+              
+              <Users className="w-2 text-primary mr-3" />
             </div>
+
           </div>
         </div>
-      </header>
-
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b">
+        <nav className="bg-white shadow-sm border-b pb-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-8">
             <Link
@@ -69,6 +70,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
         </div>
       </nav>
+      </header>
+
+      {/* Navigation */}
+      
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
